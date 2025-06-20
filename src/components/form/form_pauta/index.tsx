@@ -52,7 +52,7 @@ const FormularioPauta = ({ id, handleClose, onSucesso }: FormularioPautaProps) =
             handleClose();
             onSucesso();
         } catch (err) {
-            toast.error(err?.response?.data?.message || "Erro ao salvar pauta");
+            toast.error(err?.response?.data?.message ?? "Erro ao salvar pauta");
         }
     };
 

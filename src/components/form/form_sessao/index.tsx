@@ -76,7 +76,7 @@ const schema = z.object({
             onSucesso();
         } catch (err) {
             console.error("Erro ao salvar sessão:", err);
-            toast.error(err.response?.data?.message || "Erro ao salvar sessão");
+            toast.error(err.response?.data?.message ?? "Erro ao salvar sessão");
         }
     };
 
