@@ -18,8 +18,23 @@ https://github.com/DannyCMMarques/desafio-votacao-spring-java
   - Confere lista de associados que já votaram.  
   - Emite seu voto (`Sim`/`Não`). Se não estiver logado, o site solicita CPF, verifica cadastro, e caso não esteja cadastrado, realiza cadastro e simula login (mantém ID no `localStorage` até o usuário clicar em “Sair” e utiliza React Context) para evitar solicitar CPF a cada voto.
 
----
+> ⚙️ Para facilitar o uso e testes, foi criado um **seed com pautas** e um **seed com 10 associados** prontos para votar:
 
+```sql
+INSERT INTO associados (nome, cpf) VALUES
+('Ana Paula Ferreira',       '12345678901'),
+('Bruno Martins da Silva',   '23456789012'),
+('Carlos Henrique Souza',    '34567890123'),
+('Daniela Lopes Andrade',    '45678901234'),
+('Eduardo Lima Costa',       '56789012345'),
+('Fernanda Rocha Mendes',    '67890123456'),
+('Gabriel Vieira Ramos',     '78901234567'),
+('Helena Castro Oliveira',   '89012345678'),
+('Igor Matos Barreto',       '90123456789'),
+('Juliana Torres Almeida',   '01234567890');
+```
+
+---
 
 ## 🛠 Tecnologias
 
@@ -75,5 +90,6 @@ https://github.com/DannyCMMarques/desafio-votacao-spring-java
 
 ---
 
+## 📄 Licença
 
-
+Este projeto está licenciado sob a **MIT**. Veja [LICENSE](LICENSE) para detalhes.
