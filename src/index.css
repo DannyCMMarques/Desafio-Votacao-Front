@@ -1,11 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
 @import "tailwindcss";
 
-:root {
-  --pink: #c96b5f;
-  --pink-suave: 201, 107, 95;
 
-}
 
 html, body, #root {
   width: 100%;
@@ -13,27 +9,5 @@ html, body, #root {
   margin: 0;
   padding: 0;
   font-family: Roboto, 'Times New Roman', Times, serif;
-}
-
-
-.cabecalho {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 16px;
-  margin-top: 16px;
-  border-top: #d9d9d9c0 solid 1px;
-  border-bottom: #d9d9d9c0 solid 1px;
-}
-
-
-.titulo {
-  font-size: 32px;
-  font-weight: 500;
-}
-
-@media screen and (max-width: 768px) {
-  .titulo {
-    font-size: 24px;
-  }
+  background-color: #F0F0F0;
 }
