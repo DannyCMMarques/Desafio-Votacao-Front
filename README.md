@@ -1,54 +1,79 @@
-# React + TypeScript + Vite
+# 🗳️ Front-end de Votação Cooperativa
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Esta é a versão **front-end** responsiva, construída com React e TypeScript, de uma solução de votação para cooperativas. Consome a API desenvolvida em Java/Spring Boot:
+https://github.com/DannyCMMarques/desafio-votacao-spring-java
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 📋 Descrição
 
-## Expanding the ESLint configuration
+- Ao acessar o site, o usuário vê todas as pautas cadastradas em uma lista com paginação, incluindo título e descrição.  
+- É possível criar, editar e deletar pautas, além de visualizar detalhes e resultados de votações.  
+- No menu lateral, em **Sessões**, o usuário encontra todas as sessões registradas com seus status.  
+  - Criar nova sessão, informando o código da pauta e duração.  
+  - Iniciar, editar e excluir sessões.  
+  - Visualizar detalhes da pauta associada e status atual.  
+- Ao clicar em **Votar** em um card de pauta ou **Participar** no card de sessão, o usuário será redirecionado para uma página de votação:  
+  - Vê informações da pauta, tempo restante (contagem regressiva) e estatísticas de votação.  
+  - Confere lista de associados que já votaram.  
+  - Emite seu voto (`Sim`/`Não`). Se não estiver logado, o site solicita CPF, verifica cadastro, e caso não esteja cadastrado, realiza cadastro e simula login (mantém ID no `localStorage` até o usuário clicar em “Sair” e utiliza React Context) para evitar solicitar CPF a cada voto.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+---
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 🛠 Tecnologias
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+- **React**  
+- **TypeScript**  
+- **React Router DOM** (navegação)  
+- **Axios** (requisições HTTP)  
+- **React Hook Form** + **Zod** (validação de formulários)  
+- **React Toastify** (toasts para melhor experiência do usuário)  
+- **react-timer-hook** (contagem regressiva)  
+- **react-icons** (ícones)  
+- **react-tooltip** (tooltips mobile)  
+- **Tailwind CSS** (estilização) – [Documentação](https://tailwindcss.com/docs/installation/using-vite)  
+- **Vitest** + **@testing-library/react** (testes unitários)
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+---
+
+## 📸 Capturas de Tela
+
+
+---
+
+## 💻 Como Rodar Localmente
+
+1. **Back-end** (API)  
+   ```bash
+   git clone https://github.com/DannyCMMarques/desafio-votacao-spring-java.git
+   cd desafio-votacao-spring-java
+   docker-compose build
+   docker-compose up
+   ```
+2. **Front-end**  
+   ```bash
+   git clone https://github.com/DannyCMMarques/Desafio-Votacao-Front.git
+   cd Desafio-Votacao-Front
+   npm install
+   npm run dev
+   ```
+3. Abra no navegador: `http://localhost:5173`
+
+---
+
+## ✅ Testes
+
+- Executar todos os testes:  
+  ```bash
+  npm run test
+  ```
+- Gerar relatório de cobertura:  
+  ```bash
+  npm run test:coverage
+  ```
+
+---
+
+
+
