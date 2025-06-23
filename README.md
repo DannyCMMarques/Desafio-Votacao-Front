@@ -106,6 +106,4 @@ INSERT INTO associados (nome, cpf) VALUES
 
 ---
 
-## 📄 Licença
 
-Este projeto está licenciado sob a **MIT**. Veja [LICENSE](LICENSE) para detalhes.
