@@ -1,5 +1,5 @@
-import TagStatus from "..";
-import corTags from "../../../utils/helper/CoresTags";
+import TagStatus from '..';
+import corTags from '../../../utils/helper/CoresTags';
 
 interface TagsResumoProps {
   status: string;

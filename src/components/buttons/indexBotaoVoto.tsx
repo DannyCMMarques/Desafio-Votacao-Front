@@ -1,4 +1,4 @@
-import { FaThumbsUp, FaThumbsDown } from "react-icons/fa";
+import { FaThumbsUp, FaThumbsDown } from 'react-icons/fa';
 
 const BotaoVoto = ({ onVotar }: { onVotar: (voto: 'SIM' | 'NAO') => void }) => (
   <div className="flex flex-col gap-4">

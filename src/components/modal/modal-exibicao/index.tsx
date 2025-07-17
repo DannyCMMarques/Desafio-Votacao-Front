@@ -1,21 +1,16 @@
-import { useState } from "react";
-import Modal from "..";
+import { useState } from 'react';
+import Modal from '..';
 import VisualizarPauta from '../../visualizar-dados-pauta/index';
-import VisualizarSessao from "../../visualizar-dados-sessao";
+import VisualizarSessao from '../../visualizar-dados-sessao';
 
 interface ModalVisualizarDataProps {
   id: number;
   isSessao: boolean;
   children: React.ReactNode;
-  size?: "sm" | "md" | "lg" | "xl";
+  size?: 'sm' | 'md' | 'lg' | 'xl';
 }
 
-const ModalVisualizarData = ({
-  id,
-  isSessao,
-  children,
-  size = "md"
-}: ModalVisualizarDataProps) => {
+const ModalVisualizarData = ({ id, isSessao, children, size = 'md' }: ModalVisualizarDataProps) => {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -31,12 +26,7 @@ const ModalVisualizarData = ({
 
       {open && (
         <Modal onFechar={handleClose} tamanho={size}>
-          {isSessao ? (
-            
-             <VisualizarSessao id={id} />
-          ) : (
-            <VisualizarPauta id={id} />
-          )}
+          {isSessao ? <VisualizarSessao id={id} /> : <VisualizarPauta id={id} />}
         </Modal>
       )}
     </>

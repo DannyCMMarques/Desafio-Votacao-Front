@@ -1,6 +1,6 @@
-import { FaThumbsDown, FaThumbsUp } from "react-icons/fa";
+import { FaThumbsDown, FaThumbsUp } from 'react-icons/fa';
 
-const BotaoVotoComponent = ({ onVotar }: { onVotar: (voto:boolean) => void }) => (
+const BotaoVotoComponent = ({ onVotar }: { onVotar: (voto: boolean) => void }) => (
   <div className="flex flex-col gap-4 w-full px-4">
     <button
       className="bg-green-600 cursor-pointer text-white font-semibold py-5 rounded-2xl hover:bg-green-700 flex items-center justify-center gap-2"
