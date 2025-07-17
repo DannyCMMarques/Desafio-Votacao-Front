@@ -1,12 +1,11 @@
-import type { PautaResultadoDTO } from "./interfacePauta";
-import type { VotoResponseDTO } from "./interfaceVotacao";
+import type { PautaResultadoDTO } from './interfacePauta';
+import type { VotoResponseDTO } from './interfaceVotacao';
 
 export interface SessaoRequestDTO {
   idPauta: number;
   duracao: number;
   unidade: 'MIN' | 'SEG' | 'H';
 }
-
 
 export interface SessaoResponseDTO {
   id: number;
@@ -22,7 +21,6 @@ export interface SessaoIniciadaResponseDTO extends SessaoResponseDTO {
   votos: VotoResponseDTO[];
 }
 
-
 export interface Page<T> {
   content: T[];
   pageable: {
@@ -32,7 +30,6 @@ export interface Page<T> {
   totalElements: number;
   totalPages: number;
   last: boolean;
-
 }
 
 export type SessaoPage = Page<SessaoResponseDTO>;
