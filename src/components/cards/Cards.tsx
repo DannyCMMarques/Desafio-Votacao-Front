@@ -1,8 +1,8 @@
 import { FiEdit, FiTrash } from 'react-icons/fi';
+import type { CardsProps } from '../../interfaces/CardsProps';
+import BotaoStatusComponent from '../buttons';
 import InformacaoResumo from '../informacoes_resumo';
 import TagsResumo from '../tags/tagsResumo';
-import type { CardsProps } from '../interfaces/CardsProps';
-import BotaoStatusComponent from '../buttons';
 
 const Cards = ({
   icon,
