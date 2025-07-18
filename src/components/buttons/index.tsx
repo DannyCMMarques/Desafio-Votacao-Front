@@ -20,7 +20,7 @@ const BotaoStatusComponent = ({
   }, [status, isSessao, id, onVerResultados, onIniciarSessao, onParticiparSessao]);
 
   const { cor, texto, icone, acao, mostrarVerMais } = statusInfo;
-
+console.log(222,texto);
   return (
     <div className="mt-6 flex flex-col gap-2">
       <button

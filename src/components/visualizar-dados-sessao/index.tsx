@@ -72,7 +72,7 @@ const VisualizarSessao = ({ id }: VisualizarSessaoProps) => {
 
       <div className="mt-2 pt-2 flex gap-2 flex-wrap">
         <span className="text-sm font-bold text-gray-700">Tags: </span>
-        <TagsResumo status={handleStatus(status)} exibirResultado={false} />
+        <TagsResumo status={status} exibirResultado={false} />
       </div>
     </div>
   );
