@@ -138,7 +138,7 @@ const SessaoPageView = () => {
                 pautaTitulo={sessao.pauta.titulo}
                 id={sessao.id}
                 icon={<FaVoteYea />}
-                status={handleStatus(sessao.status)}
+                status={sessao.status}
                 duracao={sessao.duracao}
                 horarioInicio={sessao.horarioInicio}
                 horarioFim={sessao.horarioFim}

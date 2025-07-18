@@ -154,7 +154,7 @@ const PautasPageView = () => {
                 pautaTitulo={pauta.titulo}
                 descricao={handleResumo(pauta.descricao)}
                 icon={<IoNewspaper />}
-                status={handleStatus(pauta.status)}
+                status={pauta.status}
                 id={pauta.id}
                 onEditar={(id) => abrirModal('formulario', id)}
                 onExcluir={onDelete}
