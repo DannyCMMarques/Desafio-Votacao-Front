@@ -1,9 +1,4 @@
-type PaginadorProps = {
-  paginaAtual: number;
-  totalPaginas: number;
-  totalItens: number;
-  aoMudarPagina: (novaPagina: number) => void;
-};
+import type { PaginadorProps } from '../../interfaces/components/paginadorProps';
 
 const Paginador = ({ paginaAtual, totalPaginas, totalItens, aoMudarPagina }: PaginadorProps) => {
   const tamanhoSegmento = 5;

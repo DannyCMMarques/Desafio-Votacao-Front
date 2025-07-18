@@ -7,11 +7,7 @@ import Loading from '../loading';
 import TagsResumo from '../tags/tagsResumo';
 import EstatisticasVotos from '../votacao/estatisticas_votos';
 import HistoricoVotos from '../votacao/historico_votos';
-import { handleStatus } from '../../utils/helper/StatusUtils';
-
-interface VisualizarSessaoProps {
-  id: number;
-}
+import type { VisualizarSessaoProps } from '../../interfaces/components/visualizarSessaoProps';
 
 const VisualizarSessao = ({ id }: VisualizarSessaoProps) => {
   const [isLoading, setIsLoading] = useState(false);

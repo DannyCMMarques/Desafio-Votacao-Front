@@ -1,7 +1,4 @@
-interface TagStatusProps {
-  cor: 'verde' | 'amarelo' | 'vermelho';
-  texto: string;
-}
+import type { TagStatusProps } from '../../interfaces/components/tagStatusProps';
 
 const TagStatus = ({ cor, texto }: TagStatusProps) => {
   const coresClasses = {

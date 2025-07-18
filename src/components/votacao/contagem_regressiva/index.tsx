@@ -1,10 +1,5 @@
 import { useTimer } from 'react-timer-hook';
-
-interface ContagemRegressivaProps {
-  inicio: string;
-  duracaoEmMinutos: number;
-  onExpired: () => void;
-}
+import type { ContagemRegressivaProps } from '../../../interfaces/components/votacao/contagemRegressivaProps';
 
 function parseToIsoDate(data: string): string {
   const [dia, mes, resto] = data.split('/');

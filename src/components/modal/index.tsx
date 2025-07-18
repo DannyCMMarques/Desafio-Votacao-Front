@@ -1,12 +1,5 @@
-import type { ReactNode } from 'react';
 import { IoMdCloseCircle } from 'react-icons/io';
-
-type ModalProps = {
-  children: ReactNode;
-  onFechar?: () => void;
-  tamanho?: 'sm' | 'md' | 'lg' | 'xl';
-};
-
+import type { ModalProps } from '../../interfaces/components/modalProps';
 const Modal = ({ children, onFechar, tamanho = 'md' }: ModalProps) => {
   const tamanhoClasse = {
     sm: 'max-w-sm',

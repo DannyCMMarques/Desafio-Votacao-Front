@@ -1,7 +1,6 @@
 import { useCallback, useEffect, useState } from 'react';
 import { IoNewspaper } from 'react-icons/io5';
 import type { PautaResultadoDTO } from '../../service/interfaces/interfacePauta';
-import type { SessaoIniciadaResponseDTO } from '../../service/interfaces/interfaceSessao';
 import usePautaService from '../../service/usePautaService';
 import { handleStatus } from '../../utils/helper/StatusUtils';
 import InformacaoResumo from '../informacoes_resumo';
@@ -9,11 +8,7 @@ import Loading from '../loading';
 import TagsResumo from '../tags/tagsResumo';
 import EstatisticasVotos from '../votacao/estatisticas_votos';
 import HistoricoVotos from '../votacao/historico_votos';
-
-interface VisualizarPautaProps {
-  id: number;
-  sessaoDaPauta?: SessaoIniciadaResponseDTO;
-}
+import type { VisualizarPautaProps } from '../../interfaces/components/visualizarPautaProps';
 
 const VisualizarPauta = ({ id, sessaoDaPauta }: VisualizarPautaProps) => {
   const [isLoading, setIsLoading] = useState(false);
