@@ -1,8 +1,11 @@
+import { useMemo } from 'react';
 import { FiEdit, FiTrash } from 'react-icons/fi';
-import type { CardsProps } from '../../interfaces/CardsProps';
+import { useAcoesItem } from '../../hooks/useAcoesItem';
 import BotaoStatusComponent from '../buttons';
 import InformacaoResumo from '../informacoes_resumo';
 import TagsResumo from '../tags/tagsResumo';
+import type { CardsProps } from '../../interfaces/components/cardsProps';
+import { StatusPauta, StatusSessao } from '../../utils/helper/StatusUtils';
 
 const Cards = ({
   icon,
@@ -21,7 +24,11 @@ const Cards = ({
   onIniciarSessao,
   onParticiparSessao,
 }: CardsProps) => {
-  const podeEditarOuExcluir = status === 'NÃO INICIADA' || status === 'NÃO VOTADA';
+  const podeEditarOuExcluir = useMemo(() => {
+    return status === StatusSessao.NAO_INICIADA || status === StatusPauta.NAO_VOTADA;
+  }, [status]);
+
+  const { aoClicarEditar, aoClicarExcluir } = useAcoesItem(id, onEditar, onExcluir);
 
   return (
     <div className="bg-indigo-50 rounded-lg p-4 shadow-sm w-full h-full flex flex-col justify-between relative">
@@ -32,14 +39,14 @@ const Cards = ({
             <button
               className="text-gray-600 hover:text-blue-600"
               title="Editar"
-              onClick={() => onEditar?.(id!)}
+              onClick={aoClicarEditar}
             >
               <FiEdit className="w-4 h-4" />
             </button>
             <button
               className="text-gray-600 hover:text-red-600"
               title="Excluir"
-              onClick={() => onExcluir?.(id!)}
+              onClick={aoClicarExcluir}
             >
               <FiTrash className="w-4 h-4" />
             </button>

@@ -1,11 +1,6 @@
 import TagStatus from '..';
+import type { TagsResumoProps } from '../../../interfaces/components/tagsResumoProps';
 import corTags from '../../../utils/helper/CoresTags';
-
-interface TagsResumoProps {
-  status: string;
-  resultado?: string;
-  exibirResultado?: boolean;
-}
 
 const TagsResumo = ({ status, resultado, exibirResultado = true }: TagsResumoProps) => (
   <div className="flex gap-2 flex-wrap">

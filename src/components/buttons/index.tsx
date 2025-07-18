@@ -1,7 +1,7 @@
 import { useMemo } from 'react';
 import ModalVisualizarData from '../modal/modal-exibicao';
 import { getStatusInfo } from '../../utils/helper/getStatusInfo';
-import type { BotaoStatusProps } from '../../interfaces/componentInterface';
+import type { BotaoStatusProps } from '../../interfaces/components/botaoStatusProps';
 
 const BotaoStatusComponent = ({
   status,

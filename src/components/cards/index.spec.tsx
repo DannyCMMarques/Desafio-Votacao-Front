@@ -1,23 +1,27 @@
 import { fireEvent, render, screen } from '@testing-library/react';
 import { describe, expect, it, vi } from 'vitest';
 import Cards from './Cards';
+import type { TagsResumoProps } from '../../interfaces/components/tagsResumoProps';
+import type { InformacaoResumoProps } from '../../interfaces/components/informacaoResumoProps';
+import type { BotaoStatusProps } from '../../interfaces/components/botaoStatusProps';
+import { ResultadoPauta, StatusPauta } from '../../utils/enums/PautaEnum';
 
 vi.mock('../tags/tagsResumo', () => ({
-  default: ({ status, resultado, exibirResultado }: any) => (
+  default: ({ status, resultado, exibirResultado }: TagsResumoProps) => (
     <div data-testid="tags">
       {status}-{resultado}-{String(exibirResultado)}
     </div>
   ),
 }));
 vi.mock('../informacoes_resumo', () => ({
-  default: ({ icon, titulo, descricao }: any) => (
+  default: ({ titulo, descricao }: InformacaoResumoProps) => (
     <div data-testid="info">
       {titulo}: {descricao}
     </div>
   ),
 }));
 vi.mock('../buttons', () => ({
-  default: ({ onVerResultados, onIniciarSessao, onParticiparSessao }: any) => (
+  default: ({ onVerResultados, onIniciarSessao, onParticiparSessao }: BotaoStatusProps) => (
     <div>
       <button data-testid="btn-results" onClick={() => onVerResultados?.(42)}>
         R
@@ -36,8 +40,8 @@ describe('<Cards />', () => {
   const baseProps = {
     icon: <span>Ícone</span>,
     descricao: 'Descrição',
-    status: 'NÃO VOTADA',
-    resultado: 'APROVADO',
+    status: StatusPauta.NAO_VOTADA,
+    resultado: ResultadoPauta.APROVADO,
     horarioInicio: '10:00',
     horarioFim: '11:00',
     duracao: 60,
@@ -53,7 +57,9 @@ describe('<Cards />', () => {
 
   it('renderiza tags, informações e botões de status', () => {
     render(<Cards {...baseProps} />);
-    expect(screen.getByTestId('tags')).toHaveTextContent('NÃO VOTADA-APROVADO-true');
+    expect(screen.getByTestId('tags')).toHaveTextContent(
+      `${StatusPauta.NAO_VOTADA}-${ResultadoPauta.APROVADO}-true`,
+    );
     expect(screen.getByTestId('info')).toHaveTextContent('Título da Pauta: Descrição');
     expect(screen.getByTestId('btn-results')).toBeInTheDocument();
     expect(screen.getByTestId('btn-start')).toBeInTheDocument();
@@ -61,13 +67,13 @@ describe('<Cards />', () => {
   });
 
   it('exibe botões de editar e excluir quando permitido', () => {
-    render(<Cards {...baseProps} status="NÃO VOTADA" />);
+    render(<Cards {...baseProps} status={StatusPauta.NAO_VOTADA} />);
     expect(screen.getByTitle('Editar')).toBeInTheDocument();
     expect(screen.getByTitle('Excluir')).toBeInTheDocument();
   });
 
   it('oculta botões de editar e excluir quando não permitido', () => {
-    render(<Cards {...baseProps} status="VOTADA" />);
+    render(<Cards {...baseProps} status={StatusPauta.VOTADA} />);
     expect(screen.queryByTitle('Editar')).toBeNull();
     expect(screen.queryByTitle('Excluir')).toBeNull();
   });
