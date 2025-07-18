@@ -5,7 +5,8 @@ import BotaoStatusComponent from '../buttons';
 import InformacaoResumo from '../informacoes_resumo';
 import TagsResumo from '../tags/tagsResumo';
 import type { CardsProps } from '../../interfaces/components/cardsProps';
-import { StatusPauta, StatusSessao } from '../../utils/helper/StatusUtils';
+import { StatusSessao } from '../../utils/enums/StatusSessao';
+import { StatusPauta } from '../../utils/enums/PautaEnum';
 
 const Cards = ({
   icon,
