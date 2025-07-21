@@ -4,7 +4,7 @@ import type {
   PautaResponseDTO,
   PautaResultadoDTO,
   PautaResultadoPage,
-} from './interfaces/interfacePauta';
+} from '../interfaces/interfaces/interfacePauta';
 
 import useApiInterceptor from './useApiInterceptor';
 

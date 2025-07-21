@@ -1,4 +1,4 @@
-import type { SessaoIniciadaResponseDTO } from '../../../service/interfaces/interfaceSessao';
+import type { SessaoIniciadaResponseDTO } from '../../interfaces/interfaceSessao';
 
 export interface CabecalhoSessaoProps {
   data: SessaoIniciadaResponseDTO;

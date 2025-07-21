@@ -1,4 +1,4 @@
-import type { VotoResponseDTO } from '../../../service/interfaces/interfaceVotacao';
+import type { VotoResponseDTO } from '../../interfaces/interfaceVotacao';
 
 export interface HistoricoVotosProps {
   votos: VotoResponseDTO[];

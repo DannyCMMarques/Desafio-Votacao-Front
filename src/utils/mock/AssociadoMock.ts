@@ -1,8 +1,8 @@
 import type {
+  AssociadoPage,
   AssociadoRequestDTO,
   AssociadoResponseDTO,
-  AssociadoPage,
-} from '../../service/interfaces/interfaceAssociados';
+} from '../../interfaces/interfaceAssociados';
 
 export const mockAssociadoRequest: AssociadoRequestDTO = {
   nome: 'Fulano de Tal',

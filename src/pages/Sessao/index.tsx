@@ -10,9 +10,8 @@ import Loading from '../../components/loading';
 import Modal from '../../components/modal';
 import Paginador from '../../components/paginador';
 import VisualizarSessao from '../../components/visualizar-dados-sessao';
-import type { SessaoPage, SessaoResponseDTO } from '../../service/interfaces/interfaceSessao';
+import type { SessaoPage, SessaoResponseDTO } from '../../interfaces/interfaces/interfaceSessao';
 import useSessaoService from '../../service/useSessaoService';
-import { handleStatus } from '../../utils/helper/StatusUtils';
 
 type ModalState = {
   tipo: 'formulario' | 'resultado' | null;

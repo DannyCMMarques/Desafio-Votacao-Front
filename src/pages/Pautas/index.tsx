@@ -5,15 +5,14 @@ import { Bounce, toast, ToastContainer } from 'react-toastify';
 import Cards from '../../components/cards/Cards';
 import ContainerComponent from '../../components/container';
 import FormularioPauta from '../../components/form/form_pauta';
+import Loading from '../../components/loading';
 import Modal from '../../components/modal';
 import Paginador from '../../components/paginador';
-import type { PautaPage, PautaResponseDTO } from '../../service/interfaces/interfacePauta';
-import type { SessaoIniciadaResponseDTO } from '../../service/interfaces/interfaceSessao';
+import VisualizarPauta from '../../components/visualizar-dados-pauta';
+import type { PautaPage, PautaResponseDTO } from '../../interfaces/interfaces/interfacePauta';
+import type { SessaoIniciadaResponseDTO } from '../../interfaces/interfaces/interfaceSessao';
 import usePautaService from '../../service/usePautaService';
 import useSessaoService from '../../service/useSessaoService';
-import { handleStatus } from '../../utils/helper/StatusUtils';
-import Loading from '../../components/loading';
-import VisualizarPauta from '../../components/visualizar-dados-pauta';
 
 type ModalState = {
   tipo: 'formulario' | 'resultado' | null;

@@ -1,13 +1,13 @@
 import { useCallback, useEffect, useState } from 'react';
 import { LuCalendarClock } from 'react-icons/lu';
-import type { SessaoIniciadaResponseDTO } from '../../service/interfaces/interfaceSessao';
+import type { VisualizarSessaoProps } from '../../interfaces/components/visualizarSessaoProps';
 import useSessaoService from '../../service/useSessaoService';
 import InformacaoResumo from '../informacoes_resumo';
 import Loading from '../loading';
 import TagsResumo from '../tags/tagsResumo';
 import EstatisticasVotos from '../votacao/estatisticas_votos';
 import HistoricoVotos from '../votacao/historico_votos';
-import type { VisualizarSessaoProps } from '../../interfaces/components/visualizarSessaoProps';
+import type { SessaoIniciadaResponseDTO } from '../../interfaces/interfaceSessao';
 
 const VisualizarSessao = ({ id }: VisualizarSessaoProps) => {
   const [isLoading, setIsLoading] = useState(false);

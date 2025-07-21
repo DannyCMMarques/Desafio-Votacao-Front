@@ -1,8 +1,8 @@
 import type {
+  AssociadoPage,
   AssociadoRequestDTO,
   AssociadoResponseDTO,
-  AssociadoPage,
-} from './interfaces/interfaceAssociados';
+} from '../interfaces/interfaces/interfaceAssociados';
 
 import useApiInterceptor from './useApiInterceptor';
 

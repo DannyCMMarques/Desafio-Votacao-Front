@@ -1,20 +1,19 @@
 import { useCallback, useContext, useEffect, useState } from 'react';
 import { TbLockFilled } from 'react-icons/tb';
 import { useParams } from 'react-router-dom';
-import { BeatLoader } from 'react-spinners';
 import { Bounce, toast, ToastContainer } from 'react-toastify';
 import ContainerComponent from '../../components/container';
 import FormularioUsuario from '../../components/form/form_associado';
+import Loading from '../../components/loading';
 import Modal from '../../components/modal';
 import BotaoVotoComponent from '../../components/votacao/botao_votacao';
 import CabecalhoSessaoComponent from '../../components/votacao/cabecalho_votacao';
 import EstatisticasVotos from '../../components/votacao/estatisticas_votos';
 import HistoricoVotos from '../../components/votacao/historico_votos';
 import { UsuarioContext } from '../../context';
-import type { SessaoIniciadaResponseDTO } from '../../service/interfaces/interfaceSessao';
-import type { VotoRequestDTO } from '../../service/interfaces/interfaceVotacao';
+import type { SessaoIniciadaResponseDTO } from '../../interfaces/interfaces/interfaceSessao';
+import type { VotoRequestDTO } from '../../interfaces/interfaces/interfaceVotacao';
 import useSessaoService from '../../service/useSessaoService';
-import Loading from '../../components/loading';
 
 const VotacaoPageView = () => {
   const [sessao, setSessao] = useState<SessaoIniciadaResponseDTO | null>(null);

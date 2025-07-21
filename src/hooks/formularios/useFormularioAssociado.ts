@@ -1,15 +1,13 @@
 import { zodResolver } from '@hookform/resolvers/zod';
+import axios from 'axios';
 import { useContext, useEffect, useMemo, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
 import { UsuarioContext } from '../../context';
-import type {
-  AssociadoPage,
-  AssociadoRequestDTO,
-} from '../../service/interfaces/interfaceAssociados';
+
 import useAssociadoService from '../../service/useAssociadoService';
 import { cadastroSchema, loginSchema } from '../../utils/helper/schemas/schemaFormularioUsuario';
-import axios from 'axios';
+import type { AssociadoPage, AssociadoRequestDTO } from '../../interfaces/interfaceAssociados';
 
 export type FormData = {
   cpf: string;
