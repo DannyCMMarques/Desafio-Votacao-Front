@@ -41,6 +41,7 @@ const VisualizarSessao = ({ id }: VisualizarSessaoProps) => {
     pauta: { votosTotais: ptTotais, votosFavor, votosContra },
     votos,
   } = sessao;
+
   const deveMostrarGrafico = sessao.pauta.status !== 'NAO_VOTADA';
 
   return (

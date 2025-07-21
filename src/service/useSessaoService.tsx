@@ -4,9 +4,8 @@ import type {
   SessaoPage,
   SessaoRequestDTO,
   SessaoResponseDTO,
-} from '../interfaces/interfaces/interfaceSessao';
-import type { VotoRequestDTO, VotoResponseDTO } from '../interfaces/interfaces/interfaceVotacao';
-
+} from '../interfaces/interfaceSessao';
+import type { VotoRequestDTO, VotoResponseDTO } from '../interfaces/interfaceVotacao';
 import useApiInterceptor from './useApiInterceptor';
 
 function useSessaoService() {
