@@ -1,5 +1,7 @@
+import type { Status } from '../componentInterface';
+
 export interface TagsResumoProps {
-  status: string;
+  status: Status;
   resultado?: string;
   exibirResultado?: boolean;
 }

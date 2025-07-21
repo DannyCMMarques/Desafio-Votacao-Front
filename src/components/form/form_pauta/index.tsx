@@ -1,62 +1,21 @@
-import { zodResolver } from '@hookform/resolvers/zod';
-import { useForm } from 'react-hook-form';
 import { IoNewspaper } from 'react-icons/io5';
-import { toast } from 'react-toastify';
-import { z } from 'zod';
-import type { PautaRequestDTO } from '../../../service/interfaces/interfacePauta';
-import usePautaService from '../../../service/usePautaService';
+import { useFormularioPauta } from '../../../hooks/formularios/useFormularioPauta';
+import type { FormularioPautaProps } from '../../../interfaces/components/formulario/formularioPautaProps';
 import FormularioBase from '../formulario_base';
 
-interface FormularioPautaProps {
-  id?: number;
-  handleClose: () => void;
-  onSucesso: () => void;
-}
-
-const schema = z.object({
-  titulo: z.string().min(1, 'O título é obrigatório'),
-  descricao: z.string().min(1, 'A descrição é obrigatória'),
-});
-
 const FormularioPauta = ({ id, handleClose, onSucesso }: FormularioPautaProps) => {
-  const pautaService = usePautaService();
-
   const {
     register,
-    handleSubmit,
     formState: { errors },
-  } = useForm<PautaRequestDTO>({
-    resolver: zodResolver(schema),
-    defaultValues: async () => {
-      if (!id) return { titulo: '', descricao: '' };
-      const pauta = await pautaService.getById(id);
-      return { titulo: pauta.titulo, descricao: pauta.descricao };
-    },
-  });
-
-  const onSubmit = async (data: PautaRequestDTO) => {
-    try {
-      if (id) {
-        await pautaService.atualizarPautas(id, data);
-        toast.success('Editado com sucesso');
-      } else {
-        await pautaService.cadastrarPauta(data);
-        toast.success('Cadastrado com sucesso');
-      }
-
-      handleClose();
-      onSucesso();
-    } catch (err) {
-      toast.error(err?.response?.data?.message || 'Erro ao salvar pauta');
-    }
-  };
+    onSubmit,
+  } = useFormularioPauta(handleClose, onSucesso, id);
 
   return (
     <FormularioBase
       id={id}
       titulo="Pauta"
       icone={<IoNewspaper className="text-indigo-700 text-2xl" />}
-      onSubmit={handleSubmit(onSubmit)}
+      onSubmit={onSubmit}
     >
       <div>
         <label htmlFor="titulo" className="block text-sm font-semibold mb-1">
