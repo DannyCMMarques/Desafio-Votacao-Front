@@ -44,16 +44,15 @@ export function useFormularioPauta(onSucesso: () => void, handleClose: () => voi
       handleClose();
       onSucesso();
     } catch (err: unknown) {
-      if (axios.isAxiosError(err)) {
-        const axiosErr = err as AxiosError<{ message: string }>;
-        toast.error(axiosErr.response?.data?.message ?? 'Erro ao salvar pauta');
-      } else if (err instanceof Error) {
-        toast.error(err.message);
-      } else {
-        toast.error('Erro ao salvar pauta');
-      }
+      const message =
+        err?.response?.data?.message ??
+        (err instanceof Error ? err.message : undefined) ??
+        'Erro ao salvar pauta';
+
+      toast.error(message);
     }
   });
+
   return {
     ...form,
     pautaAtual,

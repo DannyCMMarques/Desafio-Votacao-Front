@@ -52,16 +52,12 @@ export const useFormularioSessao = (
       toast.success(`${acao} com sucesso`);
       handleClose();
       onSucesso();
-    } catch (err: unknown) {
-      if (axios.isAxiosError(err)) {
-        const axiosErr = err as AxiosError<{ message: string }>;
-        toast.error(axiosErr.response?.data?.message ?? 'Erro ao salvar sessão');
-      } else if (err instanceof Error) {
-        toast.error(err.message);
-      } else {
-        toast.error('Erro ao salvar sessão');
-      }
-
+    }  catch (err: unknown) {
+      const message =
+        err?.response?.data?.message ??
+        (err instanceof Error ? err.message : undefined) ??
+        'Erro ao salvar sessão';
+      toast.error(message);
       console.error(err);
     }
   });
