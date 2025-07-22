@@ -1,4 +1,3 @@
-// hooks/useVotacao.ts
 import { useCallback } from 'react';
 import { toast } from 'react-toastify';
 import useSessaoService from '../service/useSessaoService';
