@@ -1,4 +1,3 @@
-// hooks/sessao/useBuscarSessaoPorId.ts
 import { useCallback, useEffect, useState } from 'react';
 import type {
   SessaoIniciadaResponseDTO,
