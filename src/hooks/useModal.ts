@@ -1,4 +1,3 @@
-// hooks/useModal.ts
 import { useState, useCallback } from 'react';
 
 export function useModal(initial = false) {
