@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useState } from 'react';
 import { usePaginacao } from '../usePaginacao';
 import usePautaService from '../../service/usePautaService';
-import { PautaPage, PautaResponseDTO } from '../../interfaces/interfacePauta';
+import type { PautaPage, PautaResponseDTO } from '../../interfaces/interfacePauta';
 
 export const useExibirPautasPaginadas = () => {
   const { pagina, setPagina, totalPages, setTotalPages, totalItens, setTotalItens, size } =

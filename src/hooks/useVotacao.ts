@@ -12,8 +12,8 @@ export function useVotacao(onSuccess: () => void) {
         await service.votarSessao(idSessao, voto);
         toast.success('Voto computado com sucesso');
         onSuccess();
-      } catch (err: any) {
-        toast.error(err.response?.data?.message || 'Erro ao computar voto');
+      } catch (err) {
+        toast.error(err?.response?.data?.message || 'Erro ao computar voto');
         console.error(err);
       }
     },

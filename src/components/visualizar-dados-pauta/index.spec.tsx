@@ -1,9 +1,9 @@
 import { render, screen, waitFor } from '@testing-library/react';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import VisualizarPauta from '.';
-import type { SessaoIniciadaResponseDTO } from '../../interfaces/interfaces/interfaceSessao';
 import { mockPautaResultados } from '../../utils/mock/PautaMock';
 import { mockVotos } from '../../utils/mock/VotoMock';
+import type { SessaoIniciadaResponseDTO } from '../../interfaces/interfaceSessao';
 
 const getByIdMock = vi.fn();
 vi.mock('../../service/usePautaService', () => ({

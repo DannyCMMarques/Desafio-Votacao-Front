@@ -1,10 +1,5 @@
 import { createContext, useState } from 'react';
-
-type UsuarioContextType = {
-  idUsuario: number | null;
-  salvar: (id: number) => void;
-  limpar: () => void;
-};
+import type { UsuarioContextType } from '../interfaces/context/usuarioContextType';
 
 const UsuarioContext = createContext<UsuarioContextType>({
   idUsuario: null,
