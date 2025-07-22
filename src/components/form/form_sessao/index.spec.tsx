@@ -2,6 +2,7 @@ import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import { toast } from 'react-toastify';
 import FormularioSessao from '.';
+import type { FormularioBaseProps } from '../../../interfaces/components/formulario/formularioBaseProps';
 
 vi.mock('react-toastify', () => ({
   toast: {
@@ -23,7 +24,7 @@ vi.mock('../../../service/useSessaoService', () => ({
 }));
 
 vi.mock('../formulario_base', () => ({
-  default: ({ children, onSubmit }: any) => (
+  default: ({ children, onSubmit }: FormularioBaseProps) => (
     <form data-testid="form" onSubmit={onSubmit}>
       {children}
       <button type="submit">Enviar</button>

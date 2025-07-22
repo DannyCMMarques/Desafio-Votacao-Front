@@ -1,10 +1,5 @@
-import type { VotoResponseDTO } from '../../../service/interfaces/interfaceVotacao';
+import type { HistoricoVotosProps } from '../../../interfaces/components/votacao/historicoDeVotosProps';
 import VotoItemComponent from '../voto_item';
-
-interface HistoricoVotosProps {
-  votos: VotoResponseDTO[];
-  isConcluida?: boolean;
-}
 
 const HistoricoVotos = ({ votos, isConcluida = false }: HistoricoVotosProps) => (
   <div className="w-full bg-white lg:p-6 sm:p-4 p-4 rounded-lg shadow">

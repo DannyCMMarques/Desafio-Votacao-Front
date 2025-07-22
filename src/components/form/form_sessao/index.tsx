@@ -1,75 +1,21 @@
-import { zodResolver } from '@hookform/resolvers/zod';
-import { useForm } from 'react-hook-form';
-import { z } from 'zod';
-import { useState } from 'react';
 import { IoCalendar } from 'react-icons/io5';
-import { toast } from 'react-toastify';
-import useSessaoService from '../../../service/useSessaoService';
-import type { PautaResponseDTO } from '../../../service/interfaces/interfacePauta';
-import type { SessaoRequestDTO } from '../../../service/interfaces/interfaceSessao';
+import { useFormularioSessao } from '../../../hooks/formularios/useFormularioSessao';
+import type { FormularioSessaoProps } from '../../../interfaces/components/formulario/formularioSessaoProps';
 import FormularioBase from '../formulario_base';
 
-interface FormularioSessaoProps {
-  id?: number;
-  handleClose: () => void;
-  onSucesso: () => void;
-}
-
 const FormularioSessao = ({ id, handleClose, onSucesso }: FormularioSessaoProps) => {
-  const sessaoService = useSessaoService();
-  const [pautaSelecionada, setPautaSelecionada] = useState<PautaResponseDTO | null>(null);
-
-  const schema = z.object({
-    idPauta: z.number({ required_error: 'Digite o código da pauta' }),
-    duracao: z.number().min(1, 'Duração deve ser maior que 0'),
-    unidade: z.enum(['SEG', 'MIN', 'H']),
-  });
   const {
     register,
-    handleSubmit,
-    watch,
+    onSubmit,
     formState: { errors },
-  } = useForm<SessaoRequestDTO>({
-    resolver: zodResolver(schema),
-    defaultValues: async () => {
-      if (!id) return { duracao: 30, unidade: 'MIN' } as SessaoRequestDTO;
-
-      const sessao = await sessaoService.getById(id);
-      setPautaSelecionada(sessao.pauta);
-
-      return {
-        idPauta: sessao.pauta.id,
-        duracao: sessao.duracao,
-        unidade: sessao.unidade as 'SEG' | 'MIN' | 'H',
-      };
-    },
-  });
-  const codigoPauta = watch('idPauta') ?? '';
-
-  const onSubmit = async (data: SessaoRequestDTO) => {
-    try {
-      if (id) {
-        await sessaoService.atualizarSessao(id, data);
-        toast.success('Editado com sucesso');
-      } else {
-        await sessaoService.cadastrarSessao(data);
-        toast.success('Cadastrado com sucesso');
-      }
-
-      handleClose();
-      onSucesso();
-    } catch (err) {
-      console.error('Erro ao salvar sessão:', err);
-      toast.error(err.response?.data?.message || 'Erro ao salvar sessão');
-    }
-  };
+  } = useFormularioSessao(handleClose, onSucesso, id);
 
   return (
     <FormularioBase
       id={id}
       titulo="Sessão"
       icone={<IoCalendar className="text-indigo-700 text-2xl" />}
-      onSubmit={handleSubmit(onSubmit)}
+      onSubmit={onSubmit}
     >
       <div className="relative">
         <label htmlFor="pauta-id" className="block text-sm font-semibold mb-1">

@@ -1,105 +1,20 @@
-import { zodResolver } from '@hookform/resolvers/zod';
-import { useContext, useEffect, useMemo, useState } from 'react';
-import { useForm } from 'react-hook-form';
 import { IoPersonCircle } from 'react-icons/io5';
-import { toast } from 'react-toastify';
-import { z } from 'zod';
-import { UsuarioContext } from '../../../context';
-import type {
-  AssociadoPage,
-  AssociadoRequestDTO,
-} from '../../../service/interfaces/interfaceAssociados';
-import useAssociadoService from '../../../service/useAssociadoService';
+import type { FormularioUsuarioProps } from '../../../interfaces/components/formulario/formularioUsuarioProps';
+
+import { useFormularioUsuario } from '../../../hooks/formularios/useFormularioAssociado';
 import FormularioBase from '../formulario_base';
 
-interface FormularioUsuarioProps {
-  handleClose: () => void;
-  onSucesso: () => void;
-}
-
 const FormularioUsuario = ({ handleClose, onSucesso }: FormularioUsuarioProps) => {
-  const associadoService = useAssociadoService();
-  const { salvar } = useContext(UsuarioContext);
-  const [mostrarCadastro, setMostrarCadastro] = useState(false);
-
-  const schema1 = z.object({
-    cpf: z.string().regex(/^\d{11}$/, 'CPF deve conter 11 dígitos numéricos'),
-  });
-  const schema2 = z.object({
-    nome: z.string().min(1, 'Nome é obrigatório'),
-    cpf: z.string().regex(/^\d{11}$/, 'CPF deve conter 11 dígitos numéricos'),
-  });
-
-  const schema = useMemo(() => {
-    return mostrarCadastro ? schema2 : schema1;
-  }, [mostrarCadastro]);
-
-  const defaultValues = useMemo(
-    () => (mostrarCadastro ? { nome: '', cpf: '' } : { cpf: '' }),
-    [mostrarCadastro],
+  const { register, errors, onSubmit, mostrarCadastro } = useFormularioUsuario(
+    onSucesso,
+    handleClose,
   );
-
-  type FormData = { cpf: string } | AssociadoRequestDTO;
-
-  const {
-    register,
-    handleSubmit,
-    reset,
-    formState: { errors },
-  } = useForm<FormData>({
-    resolver: zodResolver(schema),
-    defaultValues,
-  });
-
-  const onSubmit = async (formData: FormData) => {
-    try {
-      const associadoPage: AssociadoPage = await associadoService.listarAssociado(
-        undefined,
-        undefined,
-        undefined,
-        undefined,
-        formData.cpf,
-      );
-      const associado = associadoPage?.content;
-      if (associado.length !== 0) {
-        salvar(associado[0].id);
-        toast.info('Usuário logado com sucesso!');
-        handleClose();
-        onSucesso();
-      } else {
-        setMostrarCadastro(true);
-        toast.info('CPF não encontrado. Preencha o nome para se cadastrar.');
-      }
-    } catch (err) {
-      toast.error('Erro ao verificar CPF.');
-    }
-  };
-
-  const onFinalizarCadastro = async (data: AssociadoRequestDTO) => {
-    try {
-      const novo = await associadoService.cadastrarAssociado(data);
-      salvar(novo.id);
-      toast.success('Usuário cadastrado com sucesso');
-      handleClose();
-      onSucesso();
-    } catch (err) {
-      toast.error(err?.response?.data?.message || 'Erro ao salvar usuário');
-    }
-  };
-
-  useEffect(() => {
-    if (mostrarCadastro) {
-      reset({ nome: '', cpf: '' });
-    } else {
-      reset({ cpf: '' });
-    }
-  }, [mostrarCadastro]);
 
   return (
     <FormularioBase
       tituloPersonalizado={mostrarCadastro ? 'Cadastre-se' : 'Bem-vindo de volta :)'}
       icone={<IoPersonCircle className="text-indigo-700 text-2xl" />}
-      onSubmit={handleSubmit(mostrarCadastro ? onFinalizarCadastro : onSubmit)}
+      onSubmit={onSubmit}
       botaoPersonalizado="Entrar"
     >
       {!mostrarCadastro && (

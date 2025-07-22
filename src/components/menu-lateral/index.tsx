@@ -12,7 +12,6 @@ const MOBILE_BREAKPOINT = 768;
 
 const LateralNav = () => {
   const isMobile = () => window.innerWidth <= MOBILE_BREAKPOINT;
-  console.log(isMobile());
   const [collapsed, setCollapsed] = useState<boolean>(isMobile());
   const [menu, setMenu] = useState<MenuItem[]>([]);
   const { limpar, idUsuario } = useContext(UsuarioContext);

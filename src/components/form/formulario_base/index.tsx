@@ -1,15 +1,5 @@
-import type { ReactNode } from 'react';
 import 'react-toastify/dist/ReactToastify.css';
-
-interface FormularioBaseProps {
-  id?: number;
-  titulo?: string;
-  icone: ReactNode;
-  onSubmit: (data: T) => void;
-  children: ReactNode;
-  tituloPersonalizado?: string;
-  botaoPersonalizado?: string;
-}
+import type { FormularioBaseProps } from '../../../interfaces/components/formulario/formularioBaseProps';
 
 const FormularioBase = ({
   id,

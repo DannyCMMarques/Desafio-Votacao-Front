@@ -4,8 +4,7 @@ import type {
   SessaoPage,
   SessaoRequestDTO,
   SessaoResponseDTO,
-} from '../../service/interfaces/interfaceSessao';
-
+} from '../../interfaces/interfaceSessao';
 import { mockPautaResultados } from './PautaMock';
 import { mockVotos } from './VotoMock';
 

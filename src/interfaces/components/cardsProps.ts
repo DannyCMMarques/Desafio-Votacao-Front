@@ -1,11 +1,13 @@
 import type { ReactNode } from 'react';
+import type { ResultadoPauta } from '../../utils/enums/PautaEnum';
+import type { Status } from '../componentInterface';
 
 export interface CardsProps {
   icon?: ReactNode;
   iconeExpandir?: ReactNode;
   descricao?: string;
-  status: string;
-  resultado?: string;
+  status: Status;
+  resultado?: ResultadoPauta;
   horarioInicio?: string | null;
   horarioFim?: string | null;
   duracao?: number;

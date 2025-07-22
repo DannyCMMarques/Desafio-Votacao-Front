@@ -1,5 +1,4 @@
-import type { VotoRequestDTO, VotoResponseDTO } from '../../service/interfaces/interfaceVotacao';
-
+import type { VotoRequestDTO, VotoResponseDTO } from '../../interfaces/interfaceVotacao';
 import { mockAssociados } from './AssociadoMock';
 
 export const mockVotoRequestSim: VotoRequestDTO = {

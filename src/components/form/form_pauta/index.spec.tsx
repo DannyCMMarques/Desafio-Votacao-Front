@@ -3,6 +3,7 @@ import { toast } from 'react-toastify';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 
 import FormularioPauta from '.';
+import type { FormularioBaseProps } from '../../../interfaces/components/formulario/formularioBaseProps';
 
 vi.mock('react-toastify', () => ({
   toast: {
@@ -24,7 +25,7 @@ vi.mock('../../../service/usePautaService', () => ({
 }));
 
 vi.mock('../formulario_base', () => ({
-  default: ({ children, onSubmit }: any) => (
+  default: ({ children, onSubmit }: FormularioBaseProps) => (
     <form data-testid="form" onSubmit={onSubmit}>
       {children}
       <button type="submit">Enviar</button>

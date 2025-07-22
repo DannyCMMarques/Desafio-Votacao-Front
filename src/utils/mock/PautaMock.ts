@@ -1,10 +1,10 @@
 import type {
+  PautaPage,
   PautaRequestDTO,
   PautaResponseDTO,
   PautaResultadoDTO,
-  PautaPage,
   PautaResultadoPage,
-} from './../../service/interfaces/interfacePauta';
+} from '../../interfaces/interfacePauta';
 
 export const mockPautaRequest: PautaRequestDTO = {
   titulo: 'Criação de Biblioteca 24 h',

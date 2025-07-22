@@ -4,7 +4,7 @@ export interface PautaRequestDTO {
 }
 
 export interface PautaResponseDTO {
-  id: number;
+  id: number | null;
   titulo: string;
   descricao: string;
   status: 'NAO_VOTADA' | 'EM_VOTACAO' | 'VOTADA';

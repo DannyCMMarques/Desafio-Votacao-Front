@@ -1,11 +1,6 @@
 import { LuAlarmClock, LuCalendarClock } from 'react-icons/lu';
-import type { SessaoIniciadaResponseDTO } from '../../../service/interfaces/interfaceSessao';
 import ContagemRegressivaComponent from '../contagem_regressiva';
-
-interface CabecalhoSessaoProps {
-  data: SessaoIniciadaResponseDTO;
-  onExpired: () => void;
-}
+import type { CabecalhoSessaoProps } from '../../../interfaces/components/votacao/cabecalhoVotaçãoProps';
 
 const CabecalhoSessaoComponent = ({ data, onExpired }: CabecalhoSessaoProps) => {
   return (
