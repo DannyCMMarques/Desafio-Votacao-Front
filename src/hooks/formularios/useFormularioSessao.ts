@@ -52,7 +52,7 @@ export const useFormularioSessao = (
       toast.success(`${acao} com sucesso`);
       handleClose();
       onSucesso();
-    }  catch (err: unknown) {
+    } catch (err: unknown) {
       const message =
         err?.response?.data?.message ??
         (err instanceof Error ? err.message : undefined) ??
