@@ -1,35 +1,15 @@
-import { useCallback, useEffect, useState } from 'react';
 import { IoNewspaper } from 'react-icons/io5';
 import type { VisualizarPautaProps } from '../../interfaces/components/visualizarPautaProps';
-import usePautaService from '../../service/usePautaService';
 import { handleStatus } from '../../utils/helper/StatusUtils';
 import InformacaoResumo from '../informacoes_resumo';
 import Loading from '../loading';
 import TagsResumo from '../tags/tagsResumo';
 import EstatisticasVotos from '../votacao/estatisticas_votos';
 import HistoricoVotos from '../votacao/historico_votos';
-import type { PautaResultadoDTO } from '../../interfaces/interfacePauta';
+import { useBuscarPautaPorId } from '../../hooks/pautas/useBuscarPautaPorId';
 
 const VisualizarPauta = ({ id, sessaoDaPauta }: VisualizarPautaProps) => {
-  const [isLoading, setIsLoading] = useState(false);
-  const [pauta, setPauta] = useState<PautaResultadoDTO>();
-  const pautaService = usePautaService();
-
-  const fetchPauta = useCallback(async () => {
-    setIsLoading(true);
-    try {
-      const data = await pautaService.getById(id);
-      setPauta(data as PautaResultadoDTO);
-    } catch (err) {
-      console.error(err);
-    } finally {
-      setIsLoading(false);
-    }
-  }, [id]);
-
-  useEffect(() => {
-    fetchPauta();
-  }, [fetchPauta]);
+  const { pauta, isLoading } = useBuscarPautaPorId(id);
 
   if (isLoading || !pauta) return <Loading />;
 

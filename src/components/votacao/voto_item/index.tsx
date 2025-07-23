@@ -1,9 +1,6 @@
 import { FaThumbsDown, FaThumbsUp } from 'react-icons/fa';
 import avatar from '././../../../assets/avatar.png';
-type VotoItemProps = {
-  nome: string;
-  voto: 'SIM' | 'NAO';
-};
+import type { VotoItemProps } from '../../../interfaces/components/votacao/votoItemProps';
 
 const VotoItemComponent = ({ nome, voto }: VotoItemProps) => {
   const isSim = voto === 'SIM';

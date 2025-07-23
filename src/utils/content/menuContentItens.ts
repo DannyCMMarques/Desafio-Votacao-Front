@@ -1,6 +1,6 @@
 import { FaVoteYea } from 'react-icons/fa';
 import { TfiAgenda } from 'react-icons/tfi';
-import type { MenuItem } from '../interfaces/MenuContentInterface';
+import type { MenuItem } from '../../interfaces/utils/MenuContentInterface';
 const menuContentItens: MenuItem[] = [
   {
     id: 2,

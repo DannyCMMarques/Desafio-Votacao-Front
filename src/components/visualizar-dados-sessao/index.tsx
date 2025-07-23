@@ -1,36 +1,16 @@
-import { useCallback, useEffect, useState } from 'react';
 import { LuCalendarClock } from 'react-icons/lu';
 import type { VisualizarSessaoProps } from '../../interfaces/components/visualizarSessaoProps';
-import useSessaoService from '../../service/useSessaoService';
 import InformacaoResumo from '../informacoes_resumo';
 import Loading from '../loading';
 import TagsResumo from '../tags/tagsResumo';
 import EstatisticasVotos from '../votacao/estatisticas_votos';
 import HistoricoVotos from '../votacao/historico_votos';
-import type { SessaoIniciadaResponseDTO } from '../../interfaces/interfaceSessao';
+import { useBuscarSessaoPorId } from '../../hooks/sessao/useBuscarSessaoPorId';
 
 const VisualizarSessao = ({ id }: VisualizarSessaoProps) => {
-  const [isLoading, setIsLoading] = useState(false);
-  const [sessao, setSessao] = useState<SessaoIniciadaResponseDTO>();
-  const sessaoService = useSessaoService();
+  const { sessao, loading } = useBuscarSessaoPorId(id);
 
-  const fetchSessao = useCallback(async () => {
-    setIsLoading(true);
-    try {
-      const data = await sessaoService.getById(id);
-      setSessao(data as SessaoIniciadaResponseDTO);
-    } catch (err) {
-      console.error(err);
-    } finally {
-      setIsLoading(false);
-    }
-  }, [id]);
-
-  useEffect(() => {
-    fetchSessao();
-  }, [fetchSessao]);
-
-  if (isLoading || !sessao) return <Loading />;
+  if (loading || !sessao) return <Loading />;
 
   const {
     pauta: { titulo: pautaTitulo, descricao },
