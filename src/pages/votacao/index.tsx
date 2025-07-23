@@ -19,13 +19,17 @@ import type { VotoRequestDTO } from '../../interfaces/interfaceVotacao';
 
 const VotacaoPageView = () => {
   const { id: idParam } = useParams<{ id: string }>();
+
   const idSessao = Number(idParam);
+
   const { idUsuario } = useContext(UsuarioContext);
 
   const { sessao, loading, refresh } = useBuscarSessaoPorId(idSessao);
 
   const { isOpenModal, handleAbrirModal, handleFecharModal } = useModal(false);
+
   const { sessaoEncerrada, handleSessaoEncerrada } = useSessaoEncerrada(false);
+
   const { votar } = useVotacao(refresh);
 
   if (loading) {

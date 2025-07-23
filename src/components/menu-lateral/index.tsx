@@ -2,12 +2,12 @@ import { useContext, useEffect, useState } from 'react';
 import { IoLogOut } from 'react-icons/io5';
 import { MdArrowForwardIos } from 'react-icons/md';
 import menuContentItens from '../../utils/content/menuContentItens';
-import type { MenuItem } from '../../utils/interfaces/MenuContentInterface';
 import { Tooltip } from 'react-tooltip';
 
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { UsuarioContext } from '../../context';
+import type { MenuItem } from '../../interfaces/utils/MenuContentInterface';
 const MOBILE_BREAKPOINT = 768;
 
 const LateralNav = () => {
