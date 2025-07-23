@@ -7,7 +7,6 @@ type VotoItemProps = {
 
 const VotoItemComponent = ({ nome, voto }: VotoItemProps) => {
   const isSim = voto === 'SIM';
-  const iconColor = isSim ? 'text-green-600' : 'text-red-600';
   const bgColor = isSim ? 'bg-green-50' : 'bg-red-50';
   const badgeColor = isSim ? 'bg-green-600' : 'bg-red-600';
   const Icon = isSim ? FaThumbsUp : FaThumbsDown;

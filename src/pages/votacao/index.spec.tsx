@@ -78,6 +78,7 @@ vi.mock('../../components/votacao/botao_votacao', () => ({
 
 import VotacaoPageView from '.';
 import { UsuarioContext } from '../../context';
+import type { UsuarioContextType } from '../../interfaces/context/usuarioContextType';
 
 const mockSessao = {
   id: 5,
@@ -91,7 +92,7 @@ const mockSessao = {
 
 const renderWithCtx = (idUsuario: number | null) =>
   render(
-    <UsuarioContext.Provider value={{ idUsuario, limpar: () => {} } as any}>
+    <UsuarioContext.Provider value={{ idUsuario, limpar: () => {} } as UsuarioContextType}>
       <VotacaoPageView />
     </UsuarioContext.Provider>,
   );

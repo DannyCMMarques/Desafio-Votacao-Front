@@ -1,18 +1,12 @@
 import { useTimer } from 'react-timer-hook';
 import type { ContagemRegressivaProps } from '../../../interfaces/components/votacao/contagemRegressivaProps';
-
-function parseToIsoDate(data: string): string {
-  const [dia, mes, resto] = data.split('/');
-  const [ano, hora] = resto.split(' ');
-  return `${ano}-${mes}-${dia}T${hora}`;
-}
-
+import { converterParaDataIso } from '../../../utils/helper/converterParaDataIso';
 export default function ContagemRegressivaComponent({
   inicio,
   duracaoEmMinutos,
   onExpired,
 }: ContagemRegressivaProps) {
-  const isoInicio = parseToIsoDate(inicio);
+  const isoInicio = converterParaDataIso(inicio);
   const dataInicio = new Date(isoInicio);
   const expiryTimestamp = new Date(dataInicio.getTime() + duracaoEmMinutos * 60 * 1000);
   const { hours, minutes, seconds, isRunning } = useTimer({
