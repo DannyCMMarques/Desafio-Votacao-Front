@@ -1,42 +1,23 @@
-import { useState } from "react";
-import Modal from "..";
+import Modal from '..';
 import VisualizarPauta from '../../visualizar-dados-pauta/index';
-import VisualizarSessao from "../../visualizar-dados-sessao";
+import VisualizarSessao from '../../visualizar-dados-sessao';
+import type { ModalVisualizarDataProps } from '../../../interfaces/components/modalProps';
+import { useModal } from '../../../hooks/useModal';
 
-interface ModalVisualizarDataProps {
-  id: number;
-  isSessao: boolean;
-  children: React.ReactNode;
-  size?: "sm" | "md" | "lg" | "xl";
-}
-
-const ModalVisualizarData = ({
-  id,
-  isSessao,
-  children,
-  size = "md"
-}: ModalVisualizarDataProps) => {
-  const [open, setOpen] = useState(false);
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
-
+const ModalVisualizarData = ({ id, isSessao, children, size = 'md' }: ModalVisualizarDataProps) => {
+  const { isOpenModal, handleAbrirModal, handleFecharModal } = useModal();
   return (
     <>
       <button
-        onClick={handleOpen}
+        onClick={handleAbrirModal}
         className="text-[12px] text-indigo-700 font-bold hover:underline bg-transparent p-0"
       >
         {children}
       </button>
 
-      {open && (
-        <Modal onFechar={handleClose} tamanho={size}>
-          {isSessao ? (
-            
-             <VisualizarSessao id={id} />
-          ) : (
-            <VisualizarPauta id={id} />
-          )}
+      {isOpenModal && (
+        <Modal onFechar={handleFecharModal} tamanho={size}>
+          {isSessao ? <VisualizarSessao id={id} /> : <VisualizarPauta id={id} />}
         </Modal>
       )}
     </>

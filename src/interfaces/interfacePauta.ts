@@ -1,14 +1,13 @@
 export interface PautaRequestDTO {
   titulo: string;
   descricao: string;
-
 }
 
 export interface PautaResponseDTO {
-  id: number;
+  id: number | null;
   titulo: string;
   descricao: string;
-  status: 'NAO_VOTADA' | "EM_VOTACAO" | "VOTADA";
+  status: 'NAO_VOTADA' | 'EM_VOTACAO' | 'VOTADA';
 }
 
 export interface PautaResultadoDTO extends PautaResponseDTO {
@@ -16,7 +15,6 @@ export interface PautaResultadoDTO extends PautaResponseDTO {
   votosFavor: number;
   votosTotais: number;
   resultado: 'APROVADO' | 'REPROVADO' | 'INDECISIVO' | 'EM_ANDAMENTO';
-
 }
 
 export interface Page<T> {
@@ -28,10 +26,7 @@ export interface Page<T> {
   totalElements: number;
   totalPages: number;
   last: boolean;
-
 }
 
 export type PautaPage = Page<PautaResponseDTO>;
 export type PautaResultadoPage = Page<PautaResultadoDTO>;
-
-
